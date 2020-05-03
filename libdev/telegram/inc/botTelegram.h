@@ -1,51 +1,60 @@
 /***************************************************************************//**
- *   @file   main.h
- *   @brief  Archivo que contiene las definiciones principales para el proyecto
- *           JosepinBot que controla el bot de telegram Telvina
+ *   @file   botTelegram.h
+ *   @brief  Archivo que contiene los prototipos, variables y estructuras
+ *           necesarias para el envo y recepcin de mensajes de un bot de telegram
  *   @author PBL
 *******************************************************************************/
 
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef BOTELEGRAM_H
+#define BOTELEGRAM_H
 
 
 /******************************************************************************/
-/*                                    DEFINES                                 */
+/*                                  DEFINES                                   */
 /******************************************************************************/
-    #define _DEBUG_
-    #define _LANG_AS
+
+#define BOTURL          "https://api.telegram.org/bot"
+#define GETMEURL        "/getMe"
+#define GETUPDATESURL   "/getUpdates"
+#define SENDMSGURL      "/sendMessage"
 
 
 /******************************************************************************/
 /*                                ESTRUCTURAS                                 */
 /******************************************************************************/
-    struct bot{
-        char token[50];
-        long adminId;
-        long users[2];
-    };
-    typedef struct bot bot;
 
-struct dbParam{
-	char ipaddr[15];
-	char usr[10];
-	char pwd[20];
-};
-typedef struct dbParam dbParam;
+    struct string {
+        char *ptr;
+        size_t len;
+    };
+
+    struct chat{
+        long update_id;
+        long msg_id;
+        long cid;
+        long fecha;
+        char* nome;
+        char* apelliu;
+        char* texto;
+    };
+
 
 /******************************************************************************/
 /*                            VARIABLES GLOBALES                              */
 /******************************************************************************/
 
-extern bot TelBot;
-extern dbParam dbConnection;
+    extern struct string s;
+
 
 /******************************************************************************/
-/*                               PROTOTIPOS                                   */
+/*                                PROTOTIPOS                                  */
 /******************************************************************************/
 
-    int getPid (void);
-    void setRunnning(int pid);
+    void init_string (struct string *s);
+    size_t writefunc (void *ptr, size_t size, size_t nmemb, struct string *s);
+    int getMSG (int cmd);
+    int sendMSG(long chat_id,char* texto);
+    int parseMSG(struct string *s);
 
 
 #endif

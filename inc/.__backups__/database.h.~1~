@@ -1,14 +1,14 @@
 /***************************************************************************//**
- *   @file   daemon.h
- *   @brief  Archivo que recoge las estructuras, definiciones y prototipos
- *           necesarios para la creación de un demonio y conseguir que el
- *           programa se ejecute en segundo plano
+ *   @file   config.h
+ *   @brief  Contiene los prototipos y definiciones necesarios para cargar los
+ *           archivos y leer los parámetros necesarios para la configuración del
+ *           bot. Como su TOKEN, su ID_ADMIN y la lista de usuarios permitidos,
+ *           así como las preferencias seleccionadas por cada uno de ellos.
  *   @author PBL
 *******************************************************************************/
 
-#ifndef DAEMON_H
-#define DAEMON_H
-
+#ifndef DATABASE_H
+#define DATABASE_H
 
 /******************************************************************************/
 /*                                  DEFINES                                   */
@@ -19,8 +19,7 @@
 /*                                  PROTOTIPOS                                */
 /******************************************************************************/
 
-    int startDaemon(void);
-    int stopDaemon(void);
+    int CargaConfig(const char* archivo);
 
 
 #endif

@@ -25,7 +25,7 @@
     struct string s;
     struct chat chatIn;
     long lastMSG = 0;
-bot TelBot;
+
 /******************************************************************************/
 /*                                FUNCIONES                                   */
 /******************************************************************************/
@@ -168,7 +168,7 @@ size_t writefunc (void *ptr, size_t size, size_t nmemb, struct string *s){
  *           de producirse un error
  */
     int parseMSG (struct string *s){
-			char* inicio = 0;
+        char* inicio = 0;
         char* straux1 = NULL;
         char* straux2 = NULL;
         int len;

@@ -14,7 +14,7 @@
 #include <curl/curl.h>
 #include <string.h>
 
-#include "main.h"
+//#include "main.h"
 #include "botTelegram.h"
 
 
@@ -56,6 +56,15 @@ size_t writefunc (void *ptr, size_t size, size_t nmemb, struct string *s){
     s->len = new_len;
 
     return size * nmemb;
+}
+
+/**
+ * Función para inicializar el bot con los datos necesarios para el
+ * correcto funcionamiento
+ */
+int initBot(){
+
+
 }
 
 /**
@@ -168,7 +177,7 @@ size_t writefunc (void *ptr, size_t size, size_t nmemb, struct string *s){
  *           de producirse un error
  */
     int parseMSG (struct string *s){
-			char* inicio = 0;
+        char* inicio = 0;
         char* straux1 = NULL;
         char* straux2 = NULL;
         int len;
